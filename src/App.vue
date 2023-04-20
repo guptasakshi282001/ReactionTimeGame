@@ -1,26 +1,27 @@
+
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="flex flex-col justify-center items-center ">
+        <GoStop @start-game="startGame" @stop-game="stopGame" />
+        <ResultsOfGame ref="result" />
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import GoStop from './components/GoStop.vue';
+import ResultsOfGame from './components/ResultsOfGame.vue';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    GoStop,
+    ResultsOfGame
+  },
+  methods: {
+    startGame() {
+      this.$refs.result.startGame();
+    },
+    stopGame() {
+      this.$refs.result.stopGame();
+    }
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
